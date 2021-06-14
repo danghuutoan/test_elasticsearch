@@ -1,0 +1,1 @@
+dropdb -U postgres -h db dvdrental && createdb -U postgres -h db dvdrental && psql -h db -U postgres -d film_test < film_test.sql

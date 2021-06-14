@@ -1,0 +1,1 @@
+curl -X DELETE http://elasticsearch:9200/films

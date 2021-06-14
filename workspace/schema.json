@@ -1,0 +1,59 @@
+[
+    {
+        "database": "film_test",
+        "index": "films",
+        "setting": {
+            "analysis": {
+                "analyzer": {
+                    "ngram_analyzer": {
+                        "filter": [
+                            "lowercase"
+                        ],
+                        "type": "custom",
+                        "tokenizer": "ngram_tokenizer"
+                    }
+                },
+                "tokenizer": {
+                    "ngram_tokenizer": {
+                        "token_chars": [
+                            "letter",
+                            "digit",
+                            "punctuation",
+                            "symbol"
+                        ],
+                        "min_gram": "9",
+                        "type": "nGram",
+                        "max_gram": "10"
+                    }
+                }
+            }
+        },
+        "plugins": [],
+        "nodes": {
+            "table": "film",
+            "label": "film",
+            "columns": [
+                "film_id",
+                "title",
+                "description"
+            ],
+            "children": [
+                {
+                    "table": "actor",
+                    "columns": [
+                        "first_name",
+                        "last_name"
+                    ],
+                    "label": "actors",
+                    "relationship": {
+                        "variant": "object",
+                        "type": "one_to_many",
+                        "through_tables": [
+                            "film_actor"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+]
